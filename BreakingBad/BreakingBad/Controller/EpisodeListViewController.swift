@@ -40,11 +40,16 @@ final class EpisodeListViewController: BaseViewController {
             })
         }
     }
+    var notes: [Note] = []
    
     //    DidLoad esnasında servis çağrısı yapılıyor.
     override func viewDidLoad() {
         super.viewDidLoad()
         self.indicator.startAnimating()
+        notes = CoreDataManager.shared.getNotes()
+        for i in notes {
+            print(i)
+        }
         Client.getEpisode { [weak self] episodes, error in
             guard let self = self else { return }
             self.indicator.stopAnimating()

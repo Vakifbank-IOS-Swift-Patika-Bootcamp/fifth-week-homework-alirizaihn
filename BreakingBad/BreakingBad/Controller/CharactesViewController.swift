@@ -22,9 +22,20 @@ final class CharactesViewController: BaseViewController {
             castColectionView.reloadData()
         }
     }
+    var notes: [Note] = []
+    let arr = [
+        UserNoteModel(episode: "alisd", noteText: "aişs fasfaadlifasşgflas", season: "1"),
+                       UserNoteModel(episode: "alisd1", noteText: "aişsdlifasşgflas", season: "2"),
+                                      UserNoteModel(episode: "alisd", noteText: "aişsdli 23414fasşgflas", season: "1"),
+                                                     UserNoteModel(episode: "alisd2", noteText: "aişsdlifas asfdsaşgflas", season: "3")]
 //    DidLoad esnasında servis çağrısı yapılıyor.
     override func viewDidLoad() {
         super.viewDidLoad()
+        notes = CoreDataManager.shared.getNotes()
+        for el in arr {
+            notes.append(CoreDataManager.shared.saveNote(newNote: el)!)
+        }
+        
         indicator.startAnimating()
         Client.getCast() {
             [weak self] casts, error in

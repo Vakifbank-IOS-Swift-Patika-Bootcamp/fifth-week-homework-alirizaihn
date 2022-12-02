@@ -16,6 +16,8 @@
 		5622DECF2931F36D002EFE37 /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5622DECE2931F36D002EFE37 /* QuoteModel.swift */; };
 		562A453E2933DAAF00E989EF /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A453D2933DAAF00E989EF /* CharacterDetailViewController.swift */; };
 		562A45402933E0E600E989EF /* QuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A453F2933E0E600E989EF /* QuotesViewController.swift */; };
+		56301F15293AA4C800E37A4D /* UserNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56301F14293AA4C800E37A4D /* UserNoteModel.swift */; };
+		56301F17293AA7A800E37A4D /* UserNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56301F16293AA7A800E37A4D /* UserNotesViewController.swift */; };
 		563AE3102933C6A600C2D6B6 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563AE30E2933C6A600C2D6B6 /* CharacterCollectionViewCell.swift */; };
 		563AE3112933C6A600C2D6B6 /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563AE30F2933C6A600C2D6B6 /* CharacterCollectionViewCell.xib */; };
 		56568E3F29322A210012DD9A /* SwiftAlertView in Frameworks */ = {isa = PBXBuildFile; productRef = 56568E3E29322A210012DD9A /* SwiftAlertView */; };
@@ -29,6 +31,7 @@
 		56568E50293251930012DD9A /* EpisodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56568E4E293251930012DD9A /* EpisodeTableViewCell.xib */; };
 		56568E52293255A20012DD9A /* SeasonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56568E51293255A20012DD9A /* SeasonModel.swift */; };
 		568C153E293A783B007C4285 /* CodeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C153D293A783B007C4285 /* CodeDataManager.swift */; };
+		568C1541293A7AD0007C4285 /* NoteModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 568C153F293A7AD0007C4285 /* NoteModel.xcdatamodeld */; };
 		56D21A4129326FB20057A630 /* OverLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D21A4029326FB20057A630 /* OverLayerView.swift */; };
 		56D21A4329326FBF0057A630 /* OverLayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D21A4229326FBF0057A630 /* OverLayerView.xib */; };
 		56D3CEA0292EA102007CD48E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D3CE9F292EA102007CD48E /* AppDelegate.swift */; };
@@ -50,6 +53,8 @@
 		5622DECE2931F36D002EFE37 /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
 		562A453D2933DAAF00E989EF /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		562A453F2933E0E600E989EF /* QuotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesViewController.swift; sourceTree = "<group>"; };
+		56301F14293AA4C800E37A4D /* UserNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNoteModel.swift; sourceTree = "<group>"; };
+		56301F16293AA7A800E37A4D /* UserNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotesViewController.swift; sourceTree = "<group>"; };
 		563AE30E2933C6A600C2D6B6 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		563AE30F2933C6A600C2D6B6 /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
 		56568E4329322AAD0012DD9A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +66,7 @@
 		56568E4E293251930012DD9A /* EpisodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeTableViewCell.xib; sourceTree = "<group>"; };
 		56568E51293255A20012DD9A /* SeasonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonModel.swift; sourceTree = "<group>"; };
 		568C153D293A783B007C4285 /* CodeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeDataManager.swift; sourceTree = "<group>"; };
+		568C1540293A7AD0007C4285 /* NoteModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NoteModel.xcdatamodel; sourceTree = "<group>"; };
 		56D21A4029326FB20057A630 /* OverLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverLayerView.swift; sourceTree = "<group>"; };
 		56D21A4229326FBF0057A630 /* OverLayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverLayerView.xib; sourceTree = "<group>"; };
 		56D3CE9C292EA102007CD48E /* BreakingBad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakingBad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +127,7 @@
 				56D3CEB4292EA116007CD48E /* Controller */,
 				56D3CEB3292EA10E007CD48E /* View */,
 				56D3CEAD292EA107007CD48E /* Info.plist */,
+				568C153F293A7AD0007C4285 /* NoteModel.xcdatamodeld */,
 			);
 			path = BreakingBad;
 			sourceTree = "<group>";
@@ -147,6 +154,7 @@
 				56568E4B29324B100012DD9A /* EpisodeListViewController.swift */,
 				562A453D2933DAAF00E989EF /* CharacterDetailViewController.swift */,
 				562A453F2933E0E600E989EF /* QuotesViewController.swift */,
+				56301F16293AA7A800E37A4D /* UserNotesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -162,6 +170,7 @@
 				56568E4929322FB50012DD9A /* GetQuoteModel.swift */,
 				56568E51293255A20012DD9A /* SeasonModel.swift */,
 				568C153D293A783B007C4285 /* CodeDataManager.swift */,
+				56301F14293AA4C800E37A4D /* UserNoteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,10 +281,13 @@
 				56D3CEA0292EA102007CD48E /* AppDelegate.swift in Sources */,
 				5622DEC729310663002EFE37 /* Client.swift in Sources */,
 				5622DEC42931060B002EFE37 /* CharactesViewController.swift in Sources */,
+				56301F15293AA4C800E37A4D /* UserNoteModel.swift in Sources */,
+				568C1541293A7AD0007C4285 /* NoteModel.xcdatamodeld in Sources */,
 				5622DEC92931067D002EFE37 /* BaseResponse.swift in Sources */,
 				5622DECD2931F2F1002EFE37 /* EpisodeModel.swift in Sources */,
 				5622DEC22930F10A002EFE37 /* ImdbViewController.swift in Sources */,
 				56568E4A29322FB50012DD9A /* GetQuoteModel.swift in Sources */,
+				56301F17293AA7A800E37A4D /* UserNotesViewController.swift in Sources */,
 				563AE3102933C6A600C2D6B6 /* CharacterCollectionViewCell.swift in Sources */,
 				56568E52293255A20012DD9A /* SeasonModel.swift in Sources */,
 				56568E4C29324B100012DD9A /* EpisodeListViewController.swift in Sources */,
@@ -551,6 +563,19 @@
 			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		568C153F293A7AD0007C4285 /* NoteModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				568C1540293A7AD0007C4285 /* NoteModel.xcdatamodel */,
+			);
+			currentVersion = 568C1540293A7AD0007C4285 /* NoteModel.xcdatamodel */;
+			path = NoteModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 56D3CE94292EA101007CD48E /* Project object */;
 }
