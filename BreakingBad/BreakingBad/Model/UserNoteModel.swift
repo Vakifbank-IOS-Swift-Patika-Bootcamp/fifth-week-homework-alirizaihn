@@ -11,5 +11,6 @@ struct UserNoteModel {
     var episode: String
     var noteText:String
     var season: String
+    var id: UUID
     
 }

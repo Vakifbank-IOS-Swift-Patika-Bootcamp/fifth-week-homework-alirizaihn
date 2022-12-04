@@ -21,6 +21,7 @@ final class CoreDataManager {
         note.setValue(newNote.season, forKeyPath: "season")
         note.setValue(newNote.episode, forKeyPath: "episode")
         note.setValue(newNote.noteText, forKeyPath: "noteText")
+        note.setValue(newNote.id, forKey: "id")
         do {
             try managedContext.save()
             return note as? Note
@@ -30,7 +31,47 @@ final class CoreDataManager {
         
         return nil
     }
+    
+    func removeNote(noteId: UUID) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", noteId as CVarArg)
+        if let notes = try? managedContext.fetch(fetchRequest) {
+            for note in notes {
+                managedContext.delete(note)
+            }
+            do {
+                try managedContext.save()
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    func removeAll() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try managedContext.execute(batchDeleteRequest)
 
+        } catch {
+            // Error Handling
+        }
+    }
+    func updateNote(noteModel: UserNoteModel) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", noteModel.id as CVarArg)
+        
+        do {
+            let notes = try managedContext.fetch(fetchRequest)
+            let note = notes[0]
+            note.setValue(noteModel.season, forKeyPath: "season")
+            note.setValue(noteModel.episode, forKeyPath: "episode")
+            note.setValue(noteModel.noteText, forKeyPath: "noteText")
+            note.setValue(noteModel.id, forKey: "id")
+            try managedContext.save()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     func getNotes() -> [Note] {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
         do {

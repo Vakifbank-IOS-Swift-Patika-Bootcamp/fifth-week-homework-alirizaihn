@@ -7,11 +7,12 @@
 
 import UIKit
 import SDWebImage
-class CharacterCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var characterBirthday: UILabel!
-    @IBOutlet weak var characterNickname: UILabel!
-    @IBOutlet weak var characterName: UILabel!
+final class CharacterCollectionViewCell: UICollectionViewCell {
+
+    @IBOutlet private weak var characterBirthday: UILabel!
+    @IBOutlet private weak var characterNickname: UILabel!
+    @IBOutlet private weak var characterName: UILabel!
     @IBOutlet private weak var characterImageView: UIImageView!
     
     override func awakeFromNib() {

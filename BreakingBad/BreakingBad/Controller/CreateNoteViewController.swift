@@ -1,27 +1,36 @@
 //
-//  EpisodeListViewController.swift
+//  CreateNoteViewController.swift
 //  BreakingBad
 //
-//  Created by Ali Rıza İLHAN on 26.11.2022.
+//  Created by Ali Rıza İLHAN on 4.12.2022.
 //
 
 import UIKit
 
-final class EpisodeListViewController: BaseViewController {
-    //    Bölümlerin Listelendiği ekranın Vcsi.
+protocol NewNotesDelegate {
+    func createdNewNote()
+}
+class CreateNoteViewController: BaseViewController {
+
+    @IBOutlet private weak var pageTitleLabel: UILabel!
+    @IBOutlet private weak var bgView: UIView!
+    @IBOutlet private weak var userNoteTextView: UITextView!
+    @IBOutlet private weak var selectEpisodeButton: UIButton!
     @IBOutlet private weak var episodeTableView: UITableView! {
         didSet {
             episodeTableView.dataSource = self
             episodeTableView.delegate = self
-            //            historyTableView.register(UINib(nibName: "HistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "HistoryCell")
             episodeTableView.estimatedRowHeight = UITableView.automaticDimension
         }
     }
+    private var newNotes = UserNoteModel(episode: "", noteText: "", season: "", id: UUID())
     var seasons: [SeasonModel]? {
         didSet {
             episodeTableView.reloadData()
         }
     }
+    var delegate: NewNotesDelegate? = nil
+    var note: Note? = nil
     var episodes: [EpisodeModel]? {
         didSet {
             
@@ -41,10 +50,14 @@ final class EpisodeListViewController: BaseViewController {
         }
     }
     var notes: [Note] = []
+//    private let notePlaceHolder = "Write Your Note..."
    
-    //    DidLoad esnasında servis çağrısı yapılıyor.
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if note != nil {
+            configureUI(note!)
+        }
         self.indicator.startAnimating()
         Client.getEpisode { [weak self] episodes, error in
             guard let self = self else { return }
@@ -64,19 +77,46 @@ final class EpisodeListViewController: BaseViewController {
             self.episodes = episodes
         }
     }
-    func openOverLayer(_ characters: [String]) {
-        let overLayerView = OverLayerView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        overLayerView.alpha = 0
-        UIView.animate(withDuration: 0.5) {
-            overLayerView.alpha = 1
-        }
-        overLayerView.delegate = self
-        overLayerView.characters = characters
-        view.addSubview(overLayerView)
+    @IBAction func selectEpisodePressed(_ sender: Any) {
+        episodeTableView.isHidden.toggle()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        bgView.endEditing(true)
+        view.endEditing(true)
+    }
+    func configureUI(_ note: Note) -> Void {
+        pageTitleLabel.text = "Update"
+        newNotes.episode = note.episode ?? ""
+        newNotes.id = note.id!
+        newNotes.season = note.season ?? ""
+        newNotes.noteText = note.noteText  ?? ""
+        let title = "S: " + (newNotes.season ?? "") + " / E: " + (newNotes.episode ?? "")
+        selectEpisodeButton.setTitle(title, for: .normal)
+        userNoteTextView.text = newNotes.noteText
+    }
+    @IBAction func AddButtonPressed(_ sender: Any) {
+       print(String(describing:newNotes))
+        if (userNoteTextView.text == "" || newNotes.episode == "") {
+            self.showErrorAlert(message: "Please fill in all the blanks. "){
+                    self.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            newNotes.noteText = userNoteTextView.text
+            if note != nil {
+    //            Update
+                CoreDataManager.shared.updateNote(noteModel: newNotes)
+            } else {
+    //            Create
+                CoreDataManager.shared.saveNote(newNote: newNotes)
+            }
+            self.dismiss(animated: true)
+            self.delegate?.createdNewNote()
+        }
+        
+    }
 }
-extension EpisodeListViewController: UITableViewDelegate, UITableViewDataSource {
+extension CreateNoteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         seasons?[section].episodes.count ?? 0
     }
@@ -90,7 +130,13 @@ extension EpisodeListViewController: UITableViewDelegate, UITableViewDataSource 
         seasons?.count ?? 0
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        openOverLayer(seasons?[indexPath.section].episodes[indexPath.row].characters ?? [String]())
+     
+        let episode = seasons?[indexPath.section].episodes[indexPath.row]
+        newNotes.episode = episode?.title ?? ""
+        newNotes.season = episode?.season ?? ""
+        let title = "S: " + (episode?.season ?? "") + " / E: " + (episode?.title ?? "")
+        selectEpisodeButton.setTitle(title, for: .normal)
+        episodeTableView.isHidden = true
     }
  
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -107,9 +153,4 @@ extension EpisodeListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
 }
-extension EpisodeListViewController : CloseViewDelegate {
-    func closeButtonPressed() {
-        print("Kapatıldı")
-    }
-    
-}
+
